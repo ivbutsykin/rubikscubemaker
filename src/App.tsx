@@ -1,7 +1,13 @@
+import { Theme } from "@radix-ui/themes";
+
 import Router from "./router/Router";
 
 function App() {
-  return <Router />;
+  return (
+    <Theme>
+      <Router />
+    </Theme>
+  );
 }
 
 export default App;
