@@ -1,0 +1,5 @@
+@import "./components/organisms/Header.css";
+
+:root {
+  --header-height: 60px;
+}

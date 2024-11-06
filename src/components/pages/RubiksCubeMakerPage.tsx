@@ -1,11 +1,7 @@
 import RubiksCubeMakerTemplate from "../templates/RubiksCubeMakerTemplate";
 
 function RubiksCubeMakerPage() {
-  return (
-    <div>
-      <RubiksCubeMakerTemplate />
-    </div>
-  );
+  return <RubiksCubeMakerTemplate />;
 }
 
 export default RubiksCubeMakerPage;
