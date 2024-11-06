@@ -3,9 +3,8 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App.tsx";
 
-import "normalize.css";
+import "./normalize.css";
 import "@radix-ui/themes/styles.css";
-
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
