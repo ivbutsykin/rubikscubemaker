@@ -1,10 +1,11 @@
-import { VCParameters } from "~/types/parameters";
+import { MakerParameters } from "~/types/parameters";
 
-export const DEFAULT_PARAMETERS: VCParameters = {
+export const DEFAULT_PARAMETERS: MakerParameters = {
   fmt: "svg",
   pzl: "3",
   view: "none",
   case: "",
+  cc: "black",
 };
 
 export const PZL_OPTIONS = [

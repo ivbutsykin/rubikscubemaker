@@ -1,12 +1,12 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-import { VCParameters } from "~/types/parameters";
+import { MakerParameters } from "~/types/parameters";
 import { DEFAULT_PARAMETERS } from "~/constants/parameters";
 
 interface ParametersState {
-  parameters: VCParameters;
-  updateParameters: (updates: Partial<VCParameters>) => void;
+  parameters: MakerParameters;
+  updateParameters: (updates: Partial<MakerParameters>) => void;
   isHydrating: boolean;
   setIsHydrating: (isHydrating: boolean) => void;
 }
