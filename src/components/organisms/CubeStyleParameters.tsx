@@ -1,16 +1,14 @@
 import { Flex, Separator } from "@radix-ui/themes";
 import { ColorResult } from "react-color";
 
-import useParametersStore from "~/stores/parameters";
+import useMakerStore from "~/stores/maker";
 
 import ColorPickerParameter from "../molecules/ColorPickerParameter";
 import ColourSchemeParameter from "./ColourSchemeParameter";
 
 function CubeStyleParameters() {
-  const parameters = useParametersStore((state) => state.parameters);
-  const updateParameters = useParametersStore(
-    (state) => state.updateParameters
-  );
+  const parameters = useMakerStore((state) => state.parameters);
+  const updateParameters = useMakerStore((state) => state.updateParameters);
 
   const { cc } = parameters;
 

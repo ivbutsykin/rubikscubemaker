@@ -1,17 +1,17 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-import { MakerParameters } from "~/types/parameters";
-import { DEFAULT_PARAMETERS } from "~/constants/parameters";
+import { MakerParameters } from "~/types/maker";
+import { DEFAULT_PARAMETERS } from "~/constants/maker";
 
-interface ParametersState {
+interface MakerState {
   parameters: MakerParameters;
   updateParameters: (updates: Partial<MakerParameters>) => void;
   isHydrating: boolean;
   setIsHydrating: (isHydrating: boolean) => void;
 }
 
-const useParametersStore = create<ParametersState>()(
+const useMakerStore = create<MakerState>()(
   persist(
     (set) => ({
       parameters: DEFAULT_PARAMETERS,
@@ -28,7 +28,7 @@ const useParametersStore = create<ParametersState>()(
       },
     }),
     {
-      name: "parameters-storage",
+      name: "maker-storage",
       storage: createJSONStorage(() => sessionStorage),
       onRehydrateStorage: () => (state) => {
         state?.setIsHydrating(false);
@@ -37,4 +37,4 @@ const useParametersStore = create<ParametersState>()(
   )
 );
 
-export default useParametersStore;
+export default useMakerStore;

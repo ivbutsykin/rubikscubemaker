@@ -1,16 +1,14 @@
 import { Flex, Separator } from "@radix-ui/themes";
 
-import useParametersStore from "~/stores/parameters";
-import { PZL_OPTIONS, VIEW_OPTIONS } from "~/constants/parameters";
-import { Pzl, View } from "~/types/parameters";
+import useMakerStore from "~/stores/maker";
+import { PZL_OPTIONS, VIEW_OPTIONS } from "~/constants/maker";
+import { Pzl, View } from "~/types/maker";
 
 import SelectParameter from "../molecules/SelectParameter";
 
 function GeneralParameters() {
-  const parameters = useParametersStore((state) => state.parameters);
-  const updateParameters = useParametersStore(
-    (state) => state.updateParameters
-  );
+  const parameters = useMakerStore((state) => state.parameters);
+  const updateParameters = useMakerStore((state) => state.updateParameters);
 
   const { pzl, view } = parameters;
 

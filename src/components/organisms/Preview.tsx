@@ -1,13 +1,13 @@
 import { Card } from "@radix-ui/themes";
 
-import useParametersStore from "~/stores/parameters";
-import { generateVCQueryParams } from "~/helpers/parameters";
-import { BASE_URL } from "~/constants/api";
+import useMakerStore from "~/stores/maker";
+import { BASE_URL } from "~/constants/maker";
+import { generateQueryParams } from "~/helpers/maker";
 
 function Preview() {
-  const parameters = useParametersStore((state) => state.parameters);
+  const parameters = useMakerStore((state) => state.parameters);
 
-  const queryParameters = generateVCQueryParams(parameters);
+  const queryParameters = generateQueryParams(parameters);
 
   return (
     <Card>

@@ -1,4 +1,6 @@
-import { MakerParameters } from "~/types/parameters";
+import { MakerParameters } from "~/types/maker";
+
+export const BASE_URL = "https://cube.rider.biz/visualcube.php";
 
 export const DEFAULT_PARAMETERS: MakerParameters = {
   fmt: "svg",
