@@ -4,11 +4,11 @@ interface SelectParameterProps {
   label: string;
   value: RadixSelect.RootProps["value"];
   onValueChange: RadixSelect.RootProps["onValueChange"];
-  items: { label: string; value: string }[];
+  options: { label: string; value: string }[];
 }
 
 function SelectParameter(props: SelectParameterProps) {
-  const { label, value, onValueChange, items } = props;
+  const { label, value, onValueChange, options } = props;
 
   return (
     <Flex justify="between" align="center">
@@ -19,9 +19,9 @@ function SelectParameter(props: SelectParameterProps) {
       <RadixSelect.Root value={value} onValueChange={onValueChange} size="1">
         <RadixSelect.Trigger />
         <RadixSelect.Content>
-          {items.map((item) => (
-            <RadixSelect.Item key={item.value} value={item.value}>
-              {item.label}
+          {options.map((option) => (
+            <RadixSelect.Item key={option.value} value={option.value}>
+              {option.label}
             </RadixSelect.Item>
           ))}
         </RadixSelect.Content>

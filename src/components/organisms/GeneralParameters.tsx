@@ -1,31 +1,47 @@
 import { Flex, Separator } from "@radix-ui/themes";
 
+import useParametersStore from "~/stores/parameters";
+import { PZL_OPTIONS, VIEW_OPTIONS } from "~/constants/parameters";
+import { Pzl, View } from "~/types/parameters";
+
 import SelectParameter from "../molecules/SelectParameter";
 
 function GeneralParameters() {
+  const parameters = useParametersStore((state) => state.parameters);
+  const updateParameters = useParametersStore(
+    (state) => state.updateParameters
+  );
+
+  const { pzl, view } = parameters;
+
   return (
     <Flex direction="column">
       <Flex direction="column" p="3" gap="3">
         <SelectParameter
           label="Puzzle type"
-          value="3"
-          items={[{ label: "3x3x3", value: "3" }]}
-          onValueChange={() => {}}
+          value={pzl}
+          options={PZL_OPTIONS}
+          onValueChange={handlePzlChange}
         />
         <SelectParameter
           label="Special view"
-          value="plan"
-          items={[
-            { label: "Plan", value: "plan" },
-            { label: "Transparent", value: "transparent" },
-          ]}
-          onValueChange={() => {}}
+          value={view}
+          options={VIEW_OPTIONS}
+          onValueChange={handleViewChange}
         />
       </Flex>
 
       <Separator size="4" />
     </Flex>
   );
+
+  function handlePzlChange(value: string) {
+    updateParameters({ pzl: value as Pzl });
+  }
+
+  function handleViewChange(value: string) {
+    updateParameters({ view: value as View });
+  }
 }
 
 export default GeneralParameters;
