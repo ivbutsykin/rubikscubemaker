@@ -12,12 +12,17 @@ function handleColor(value: string) {
   return value.replace("#", "");
 }
 
+function handleArray(value: string[]) {
+  return value.join(",");
+}
+
 export function generateQueryParams(parameters: MakerParameters) {
   const rawParams = {
     fmt: parameters.fmt,
     pzl: parameters.pzl,
     view: handleNone(parameters.view),
     case: parameters.case,
+    sch: handleArray(parameters.sch.map(handleColor)),
     cc: handleColor(parameters.cc),
   };
 

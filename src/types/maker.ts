@@ -11,6 +11,7 @@ export type View = "plan" | "trans" | "none"; // Special View
 export type Case = string; // Algorithm to solve case
 
 /* Cube Style */
+export type Sch = string[]; // Colour Scheme (U R F D L B)
 export type CC = string; // Cube colour
 
 export interface MakerParameters {
@@ -18,5 +19,6 @@ export interface MakerParameters {
   pzl: Pzl;
   view: View;
   case: Case;
+  sch: Sch;
   cc: CC;
 }

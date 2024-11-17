@@ -20,7 +20,7 @@ function CubeStyleParameters() {
         <ColorPickerParameter
           label="Cube colour"
           color={cc}
-          onChange={handleCCChange}
+          onChange={handleCcChange}
         />
       </Flex>
 
@@ -28,7 +28,7 @@ function CubeStyleParameters() {
     </Flex>
   );
 
-  function handleCCChange(color: ColorResult) {
+  function handleCcChange(color: ColorResult) {
     updateParameters({ cc: color.hex });
   }
 }

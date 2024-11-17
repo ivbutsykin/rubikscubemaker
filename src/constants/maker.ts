@@ -7,6 +7,7 @@ export const DEFAULT_PARAMETERS: MakerParameters = {
   pzl: "3",
   view: "none",
   case: "",
+  sch: ["yellow", "red", "blue", "white", "orange", "green"],
   cc: "black",
 };
 
