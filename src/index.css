@@ -1,7 +1,11 @@
-@import "./components/organisms/Header.css";
+@import "./components/organisms/Menubar.css";
+@import "./components/organisms/Sidebar.css";
 
 :root {
-  --header-height: 60px;
+  --menubar-height: 60px;
+  --sidebar-width: 360px;
+
+  --cursor-label: pointer;
 }
 
 .radix-themes {

@@ -1,0 +1,13 @@
+.Sidebar {
+  position: relative;
+  width: var(--sidebar-width);
+  height: 100dvh;
+  background-color: var(--color-background);
+  box-shadow: 1px 0px var(--accent-a6);
+}
+
+.SidebarSpacer {
+  width: 100%;
+  height: var(--menubar-height);
+  box-shadow: 0 1px var(--accent-a6);
+}
