@@ -1,7 +1,7 @@
 import { Flex } from "@radix-ui/themes";
 
 import GeneralParameters from "./GeneralParameters";
-// import StateDefinitionParameters from "./StateDefinitionParameters";
+import StateDefinitionParameters from "./StateDefinitionParameters";
 import CubeStyleParameters from "./CubeStyleParameters";
 
 function Sidebar() {
@@ -11,7 +11,7 @@ function Sidebar() {
         <div className="SidebarSpacer" />
 
         <GeneralParameters />
-        {/* <StateDefinitionParameters /> */}
+        <StateDefinitionParameters />
         <CubeStyleParameters />
       </Flex>
     </aside>

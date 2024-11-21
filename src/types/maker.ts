@@ -1,5 +1,8 @@
 /*
- * Documentation: https://cube.rider.biz/visualcube.php
+ * Maker parameters are mostly identical to the VisualCube parameters:
+ * https://cube.rider.biz/visualcube.php.
+ *
+ * Inconsistencies are handled in the `generateQueryParams` function (.../helpers/maker.ts).
  */
 
 /* General */
