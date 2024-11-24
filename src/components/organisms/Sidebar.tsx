@@ -6,7 +6,7 @@ import CubeStyleParameters from "./CubeStyleParameters";
 
 function Sidebar() {
   return (
-    <aside className="Sidebar" data-accent-color="gray">
+    <aside className="Sidebar">
       <Flex direction="column">
         <div className="SidebarSpacer" />
 

@@ -5,16 +5,17 @@ import { ChevronUpIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 import { ColorResult } from "react-color";
 
 import useMakerStore from "~/stores/maker";
+import { useColorSchemeParameter } from "~/hooks/maker";
 
 import ColorPickerParameter from "../molecules/ColorPickerParameter";
 
-function ColourSchemeParameter() {
+function ColorSchemeParameter() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const parameters = useMakerStore((state) => state.parameters);
+  const { sch, faces } = useColorSchemeParameter();
   const updateParameters = useMakerStore((state) => state.updateParameters);
 
-  const { sch } = parameters;
+  const { up, right, front, down, left, back } = faces;
 
   return (
     <Flex direction="column" gap="2" asChild>
@@ -34,34 +35,40 @@ function ColourSchemeParameter() {
         <Collapsible.Content>
           <Flex direction="column" gap="1">
             <ColorPickerParameter
-              label="Up face"
-              color={sch[0]}
-              onChange={(color) => handleSchChange(color, 0)}
+              label="Up"
+              color={up.color}
+              onChange={(color) => handleSchChange(color, up.index)}
+              size="1"
             />
             <ColorPickerParameter
-              label="Right face"
-              color={sch[1]}
-              onChange={(color) => handleSchChange(color, 1)}
+              label="Right"
+              color={right.color}
+              onChange={(color) => handleSchChange(color, right.index)}
+              size="1"
             />
             <ColorPickerParameter
-              label="Front face"
-              color={sch[2]}
-              onChange={(color) => handleSchChange(color, 2)}
+              label="Front"
+              color={front.color}
+              onChange={(color) => handleSchChange(color, front.index)}
+              size="1"
             />
             <ColorPickerParameter
-              label="Down face"
-              color={sch[3]}
-              onChange={(color) => handleSchChange(color, 3)}
+              label="Down"
+              color={down.color}
+              onChange={(color) => handleSchChange(color, down.index)}
+              size="1"
             />
             <ColorPickerParameter
-              label="Left face"
-              color={sch[4]}
-              onChange={(color) => handleSchChange(color, 4)}
+              label="Left"
+              color={left.color}
+              onChange={(color) => handleSchChange(color, left.index)}
+              size="1"
             />
             <ColorPickerParameter
-              label="Back face"
-              color={sch[5]}
-              onChange={(color) => handleSchChange(color, 5)}
+              label="Back"
+              color={back.color}
+              onChange={(color) => handleSchChange(color, back.index)}
+              size="1"
             />
           </Flex>
         </Collapsible.Content>
@@ -77,4 +84,4 @@ function ColourSchemeParameter() {
   }
 }
 
-export default ColourSchemeParameter;
+export default ColorSchemeParameter;

@@ -1,5 +1,5 @@
 .Menubar {
   height: var(--menubar-height);
   background-color: var(--color-background);
-  box-shadow: 0 1px var(--accent-a6);
+  box-shadow: 0 1px var(--gray-6);
 }

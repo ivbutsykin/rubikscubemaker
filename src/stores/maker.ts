@@ -29,7 +29,7 @@ const useMakerStore = create<MakerState>()(
     }),
     {
       name: "maker-storage",
-      storage: createJSONStorage(() => sessionStorage),
+      storage: createJSONStorage(() => localStorage),
       onRehydrateStorage: () => (state) => {
         state?.setIsHydrating(false);
       },

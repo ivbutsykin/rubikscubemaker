@@ -4,7 +4,7 @@ import { ColorResult } from "react-color";
 import useMakerStore from "~/stores/maker";
 
 import ColorPickerParameter from "../molecules/ColorPickerParameter";
-import ColourSchemeParameter from "./ColourSchemeParameter";
+import ColorSchemeParameter from "./ColorSchemeParameter";
 
 function CubeStyleParameters() {
   const parameters = useMakerStore((state) => state.parameters);
@@ -15,10 +15,10 @@ function CubeStyleParameters() {
   return (
     <Flex direction="column">
       <Flex direction="column" p="3" gap="3">
-        <ColourSchemeParameter />
+        <ColorSchemeParameter />
 
         <ColorPickerParameter
-          label="Cube colour"
+          label="Cube Colour"
           color={cc}
           onChange={handleCcChange}
         />

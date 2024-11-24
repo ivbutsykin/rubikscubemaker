@@ -16,13 +16,13 @@ function GeneralParameters() {
     <Flex direction="column">
       <Flex direction="column" p="3" gap="3">
         <SelectParameter
-          label="Puzzle type"
+          label="Puzzle Type"
           value={pzl}
           options={PZL_OPTIONS}
           onValueChange={handlePzlChange}
         />
         <SelectParameter
-          label="Special view"
+          label="Special View"
           value={view}
           options={VIEW_OPTIONS}
           onValueChange={handleViewChange}
