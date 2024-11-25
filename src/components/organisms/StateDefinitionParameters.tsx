@@ -3,7 +3,7 @@ import { Flex, Separator } from "@radix-ui/themes";
 import useMakerStore from "~/stores/maker";
 
 import TextFieldParameter from "../molecules/TextFieldParameter";
-import FaceletColorsParameter from "./FaceletColorsParameter";
+import FaceletDefinitionParameter from "./FaceletDefinitionParameter";
 
 function StateDefinitionParameters() {
   const parameters = useMakerStore((state) => state.parameters);
@@ -21,7 +21,7 @@ function StateDefinitionParameters() {
           onChange={handleCaseChange}
           placeholder="R U R' U'"
         />
-        {/* <FaceletColorsParameter /> */}
+        <FaceletDefinitionParameter />
       </Flex>
 
       <Separator size="4" />

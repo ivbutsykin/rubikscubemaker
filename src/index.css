@@ -7,7 +7,13 @@
   --menubar-height: 60px;
   --sidebar-width: 360px;
 
-  --cursor-label: pointer;
+  --gradient-transparent: repeating-conic-gradient(
+      rgb(255, 255, 255) 0%,
+      rgb(255, 255, 255) 25%,
+      rgb(238, 238, 238) 0%,
+      rgb(238, 238, 238) 50%
+    )
+    0% 0% / 16px 16px;
 }
 
 .radix-themes {
