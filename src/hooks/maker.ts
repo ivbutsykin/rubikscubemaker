@@ -6,44 +6,44 @@ export function useFaces() {
   const { sch } = parameters;
 
   return {
-    up: {
-      key: "up",
-      abbr: "u",
+    // Up
+    u: {
+      key: "u",
       color: sch[0],
     },
-    right: {
-      key: "right",
-      abbr: "r",
+    // Right
+    r: {
+      key: "r",
       color: sch[1],
     },
-    front: {
-      key: "front",
-      abbr: "f",
+    // Front
+    f: {
+      key: "f",
       color: sch[2],
     },
-    down: {
-      key: "down",
-      abbr: "d",
+    // Down
+    d: {
+      key: "d",
       color: sch[3],
     },
-    left: {
-      key: "left",
-      abbr: "l",
+    // Left
+    l: {
+      key: "l",
       color: sch[4],
     },
-    back: {
-      key: "back",
-      abbr: "b",
+    // Back
+    b: {
+      key: "b",
       color: sch[5],
     },
-    blank: {
-      key: "blank",
-      abbr: "n",
+    // Blank
+    n: {
+      key: "n",
       color: "#808080",
     },
-    transparent: {
-      key: "transparent",
-      abbr: "t",
+    // Transparent
+    t: {
+      key: "t",
       color: "var(--gradient-transparent)",
     },
   };

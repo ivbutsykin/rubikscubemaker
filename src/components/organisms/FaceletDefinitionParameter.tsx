@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Flex, Tabs, Text } from "@radix-ui/themes";
 
+import useMakerStore from "~/stores/maker";
 import { useFaces } from "~/hooks/maker";
 
 import ColorSwatch from "../atoms/ColorSwatch";
+import FaceVisualizer from "../molecules/FaceVisualizer";
 
 function FaceletDefinitionParameter() {
-  const { up, right, front, down, left, back, blank, transparent } = useFaces();
+  const { pzl } = useMakerStore((state) => state.parameters);
+  const { u, r, f, d, l, b, n, t } = useFaces();
 
-  const [selectedFace, setSelectedColor] = useState("up");
+  const [selectedFace, setSelectedColor] = useState("u");
 
   return (
     <Flex direction="column" gap="1">
@@ -25,48 +28,63 @@ function FaceletDefinitionParameter() {
           <Tabs.Trigger value="left">Left</Tabs.Trigger>
           <Tabs.Trigger value="back">Back</Tabs.Trigger>
         </Tabs.List>
+
+        <Tabs.Content value="up">
+          <Flex justify="center">
+            <FaceVisualizer
+              visualizableCase={{
+                type: pzl,
+                view: "face",
+                direction: "up",
+                facelets:
+                  "uuuuuuuuurrrrrrrrrfffffffffdddddddddlllllllllbbbbbbbbb",
+              }}
+              size={120}
+            />
+          </Flex>
+        </Tabs.Content>
       </Tabs.Root>
 
       <Flex direction="row" justify="between">
         <ColorSwatch
-          color={up.color}
-          onClick={() => handleFaceChange(up.key)}
-          isActive={selectedFace === up.key}
+          color={u.color}
+          onClick={() => handleFaceChange(u.key)}
+          isActive={selectedFace === u.key}
         />
         <ColorSwatch
-          color={right.color}
-          onClick={() => handleFaceChange(right.key)}
-          isActive={selectedFace === right.key}
+          color={r.color}
+          onClick={() => handleFaceChange(r.key)}
+          isActive={selectedFace === r.key}
         />
         <ColorSwatch
-          color={front.color}
-          onClick={() => handleFaceChange(front.key)}
-          isActive={selectedFace === front.key}
+          color={f.color}
+          onClick={() => handleFaceChange(f.key)}
+          isActive={selectedFace === f.key}
         />
         <ColorSwatch
-          color={down.color}
-          onClick={() => handleFaceChange(down.key)}
-          isActive={selectedFace === down.key}
+          color={d.color}
+          onClick={() => handleFaceChange(d.key)}
+          isActive={selectedFace === d.key}
         />
         <ColorSwatch
-          color={left.color}
-          onClick={() => handleFaceChange(left.key)}
-          isActive={selectedFace === left.key}
+          color={l.color}
+          onClick={() => handleFaceChange(l.key)}
+          isActive={selectedFace === l.key}
         />
         <ColorSwatch
-          color={back.color}
-          onClick={() => handleFaceChange(back.key)}
-          isActive={selectedFace === back.key}
+          color={b.color}
+          onClick={() => handleFaceChange(b.key)}
+          isActive={selectedFace === b.key}
         />
         <ColorSwatch
-          color={blank.color}
-          onClick={() => handleFaceChange(blank.key)}
-          isActive={selectedFace === blank.key}
+          color={n.color}
+          onClick={() => handleFaceChange(n.key)}
+          isActive={selectedFace === n.key}
         />
         <ColorSwatch
-          color={transparent.color}
-          onClick={() => handleFaceChange(transparent.key)}
-          isActive={selectedFace === transparent.key}
+          color={t.color}
+          onClick={() => handleFaceChange(t.key)}
+          isActive={selectedFace === t.key}
         />
       </Flex>
     </Flex>

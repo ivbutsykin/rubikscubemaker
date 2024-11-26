@@ -1,4 +1,7 @@
 @import "./components/atoms/ColorSwatch.css";
+@import "./components/atoms/Facelet.css";
+
+@import "./components/molecules/FaceVisualizer.css";
 
 @import "./components/organisms/Menubar.css";
 @import "./components/organisms/Sidebar.css";

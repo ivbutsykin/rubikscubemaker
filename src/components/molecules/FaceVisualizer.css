@@ -1,0 +1,14 @@
+.FaceVisualizer {
+  display: flex;
+  align-items: center;
+}
+
+.FaceVisualizerContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.FaceVisualizerRow {
+  display: flex;
+  flex-direction: row;
+}

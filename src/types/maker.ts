@@ -25,3 +25,5 @@ export interface MakerParameters {
   sch: Sch;
   cc: CC;
 }
+
+export type Face = "u" | "r" | "f" | "d" | "l" | "b" | "n" | "t";

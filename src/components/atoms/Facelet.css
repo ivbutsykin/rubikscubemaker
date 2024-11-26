@@ -1,0 +1,8 @@
+.Facelet {
+  border: 1px solid var(--gray-a8);
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-8);
+    outline-offset: -1px;
+  }
+}
