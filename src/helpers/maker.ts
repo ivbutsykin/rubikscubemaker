@@ -1,4 +1,19 @@
-import { MakerParameters } from "~/types/maker";
+import { MakerParameters, Pzl } from "~/types/maker";
+import { square } from "~/utils/number";
+
+export function getCubeSize(pzl: Pzl) {
+  return +pzl;
+}
+
+export function generateFd(pzl: Pzl) {
+  const FACES = ["u", "r", "f", "d", "l", "b"];
+
+  const cubeSize = getCubeSize(pzl);
+
+  return FACES.map((face) => {
+    return face.repeat(square(cubeSize));
+  }).join("");
+}
 
 function handleNone(value: string) {
   if (value === "none") {

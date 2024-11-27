@@ -9,6 +9,7 @@ import SelectParameter from "../molecules/SelectParameter";
 function GeneralParameters() {
   const parameters = useMakerStore((state) => state.parameters);
   const updateParameters = useMakerStore((state) => state.updateParameters);
+  const updatePuzzleType = useMakerStore((state) => state.updatePuzzleType);
 
   const { pzl, view } = parameters;
 
@@ -34,7 +35,7 @@ function GeneralParameters() {
   );
 
   function handlePzlChange(value: string) {
-    updateParameters({ pzl: value as Pzl });
+    updatePuzzleType(value as Pzl);
   }
 
   function handleViewChange(value: string) {

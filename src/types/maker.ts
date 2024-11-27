@@ -12,6 +12,7 @@ export type View = "plan" | "trans" | "none"; // Special View
 
 /* State Definition */
 export type Case = string; // Algorithm to solve case
+export type Fd = string; // Facelet Definition
 
 /* Cube Style */
 export type Sch = string[]; // Colour Scheme (U R F D L B)
@@ -22,6 +23,7 @@ export interface MakerParameters {
   pzl: Pzl;
   view: View;
   case: Case;
+  fd: Fd;
   sch: Sch;
   cc: CC;
 }

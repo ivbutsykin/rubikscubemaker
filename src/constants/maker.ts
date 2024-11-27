@@ -1,3 +1,4 @@
+import { generateFd } from "~/helpers/maker";
 import { MakerParameters } from "~/types/maker";
 
 export const BASE_URL = "https://cube.rider.biz/visualcube.php";
@@ -7,6 +8,7 @@ export const DEFAULT_PARAMETERS: MakerParameters = {
   pzl: "3",
   view: "none",
   case: "",
+  fd: generateFd("3"),
   sch: ["#FEFE00", "#EE0000", "#0000F2", "#FFFFFF", "#FFA100", "#00D800"], // https://github.com/Cride5/visualcube/blob/5e3d38a534375adf2a326b99941f01999199163d/visualcube.php#L115
   cc: "#000000",
 };

@@ -1,12 +1,14 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-import { MakerParameters } from "~/types/maker";
+import { MakerParameters, Pzl } from "~/types/maker";
 import { DEFAULT_PARAMETERS } from "~/constants/maker";
+import { generateFd } from "~/helpers/maker";
 
 interface MakerState {
   parameters: MakerParameters;
   updateParameters: (updates: Partial<MakerParameters>) => void;
+  updatePuzzleType: (pzl: Pzl) => void;
   isHydrating: boolean;
   setIsHydrating: (isHydrating: boolean) => void;
 }
@@ -19,6 +21,17 @@ const useMakerStore = create<MakerState>()(
         set((state) => {
           return {
             parameters: { ...state.parameters, ...updates },
+          };
+        });
+      },
+      updatePuzzleType: (pzl) => {
+        set((state) => {
+          return {
+            parameters: {
+              ...state.parameters,
+              pzl,
+              fd: generateFd(pzl),
+            },
           };
         });
       },

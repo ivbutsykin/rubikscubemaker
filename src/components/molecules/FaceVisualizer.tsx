@@ -1,8 +1,8 @@
 import { VisualizableCase } from "~/types/visualizer";
 
-import { FACE_FACELET_MAP } from "~/constants/visualizer";
 import {
   calculateFaceVisualizerProperties,
+  generateFaceFaceletMap,
   getFaceletPosition,
 } from "~/helpers/visualizer";
 import { useFaces } from "~/hooks/maker";
@@ -22,7 +22,7 @@ function FaceVisualizer(props: FaceVisualizerProps) {
 
   const { type: cubeType, direction: cubeDirection } = visualizableCase;
 
-  const faceletMap = FACE_FACELET_MAP[cubeType][cubeDirection];
+  const faceletMap = generateFaceFaceletMap(cubeType, cubeDirection);
   const { faceletSize, faceletBorderRadius, gap } =
     calculateFaceVisualizerProperties(cubeType, size);
 
