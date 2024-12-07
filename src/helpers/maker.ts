@@ -5,6 +5,10 @@ export function getCubeSize(pzl: Pzl) {
   return +pzl;
 }
 
+export function isCaseSupported(pzl: Pzl) {
+  return ["1", "2", "3"].includes(pzl);
+}
+
 export function generateFd(pzl: Pzl) {
   const FACES = ["u", "r", "f", "d", "l", "b"];
 

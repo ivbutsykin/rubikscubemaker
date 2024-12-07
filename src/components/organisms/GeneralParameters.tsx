@@ -7,11 +7,9 @@ import { Pzl, View } from "~/types/maker";
 import SelectParameter from "../molecules/SelectParameter";
 
 function GeneralParameters() {
-  const parameters = useMakerStore((state) => state.parameters);
+  const { pzl, view } = useMakerStore((state) => state.parameters);
   const updateParameters = useMakerStore((state) => state.updateParameters);
   const updatePuzzleType = useMakerStore((state) => state.updatePuzzleType);
-
-  const { pzl, view } = parameters;
 
   return (
     <Flex direction="column">

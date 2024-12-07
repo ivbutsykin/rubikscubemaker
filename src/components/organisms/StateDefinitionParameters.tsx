@@ -1,15 +1,14 @@
 import { Flex, Separator } from "@radix-ui/themes";
 
 import useMakerStore from "~/stores/maker";
+import { isCaseSupported } from "~/helpers/maker";
 
 import TextFieldParameter from "../molecules/TextFieldParameter";
 import FaceletDefinitionParameter from "./FaceletDefinitionParameter";
 
 function StateDefinitionParameters() {
-  const parameters = useMakerStore((state) => state.parameters);
+  const { pzl, case: makerCase } = useMakerStore((state) => state.parameters);
   const updateParameters = useMakerStore((state) => state.updateParameters);
-
-  const { case: makerCase } = parameters;
 
   return (
     <Flex direction="column">
@@ -20,6 +19,7 @@ function StateDefinitionParameters() {
           value={makerCase}
           onChange={handleCaseChange}
           placeholder="R U R' U'"
+          isDisabled={!isCaseSupported(pzl)}
         />
         <FaceletDefinitionParameter />
       </Flex>

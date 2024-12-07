@@ -30,6 +30,7 @@ const useMakerStore = create<MakerState>()(
             parameters: {
               ...state.parameters,
               pzl,
+              case: "",
               fd: generateFd(pzl),
             },
           };

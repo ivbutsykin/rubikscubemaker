@@ -7,10 +7,8 @@ import ColorPickerParameter from "../molecules/ColorPickerParameter";
 import ColorSchemeParameter from "./ColorSchemeParameter";
 
 function CubeStyleParameters() {
-  const parameters = useMakerStore((state) => state.parameters);
+  const { cc } = useMakerStore((state) => state.parameters);
   const updateParameters = useMakerStore((state) => state.updateParameters);
-
-  const { cc } = parameters;
 
   return (
     <Flex direction="column">
