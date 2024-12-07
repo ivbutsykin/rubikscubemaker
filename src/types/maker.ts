@@ -16,7 +16,11 @@ export type Fd = string; // Facelet Definition
 
 /* Cube Style */
 export type Sch = string[]; // Colour Scheme (U R F D L B)
-export type CC = string; // Cube colour
+export type Cc = string; // Cube colour
+
+/* Added Features */
+export type Arw = string; // Arrow Definition
+export type Ac = string; // Default Arrow Colour
 
 export interface MakerParameters {
   fmt: Fmt;
@@ -25,7 +29,9 @@ export interface MakerParameters {
   case: Case;
   fd: Fd;
   sch: Sch;
-  cc: CC;
+  cc: Cc;
+  arw: Arw;
+  ac: Ac;
 }
 
 export type Face = "u" | "r" | "f" | "d" | "l" | "b" | "n" | "t";

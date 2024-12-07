@@ -44,6 +44,8 @@ export function generateQueryParams(parameters: MakerParameters) {
     fd: parameters.fd,
     sch: handleArray(parameters.sch.map(handleColor)),
     cc: handleColor(parameters.cc),
+    arw: parameters.arw,
+    ac: handleColor(parameters.ac),
   };
 
   const filteredParams = Object.fromEntries(

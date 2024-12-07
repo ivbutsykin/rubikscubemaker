@@ -3,6 +3,7 @@ import { Flex } from "@radix-ui/themes";
 import GeneralParameters from "./GeneralParameters";
 import StateDefinitionParameters from "./StateDefinitionParameters";
 import CubeStyleParameters from "./CubeStyleParameters";
+import AddedFeaturesParameters from "./AddedFeaturesParameters";
 
 function Sidebar() {
   return (
@@ -13,6 +14,7 @@ function Sidebar() {
         <GeneralParameters />
         <StateDefinitionParameters />
         <CubeStyleParameters />
+        <AddedFeaturesParameters />
       </Flex>
     </aside>
   );
