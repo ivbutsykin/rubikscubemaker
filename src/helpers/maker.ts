@@ -37,6 +37,7 @@ export function generateQueryParams(parameters: MakerParameters) {
     pzl: parameters.pzl,
     view: handleNone(parameters.view),
     case: parameters.case,
+    fd: parameters.fd,
     sch: handleArray(parameters.sch.map(handleColor)),
     cc: handleColor(parameters.cc),
   };

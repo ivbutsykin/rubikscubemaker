@@ -6,7 +6,7 @@ interface FaceletProps {
   height: number;
   borderRadius: number;
   color: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Facelet = forwardRef(function Facelet(

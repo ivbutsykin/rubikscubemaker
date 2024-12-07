@@ -39,7 +39,7 @@ export function useFaces() {
     // Blank
     n: {
       key: "n",
-      color: "#808080",
+      color: "#404040",
     },
     // Transparent
     t: {

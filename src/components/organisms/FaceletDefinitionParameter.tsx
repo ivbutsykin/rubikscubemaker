@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { Box, Flex, Tabs, Text } from "@radix-ui/themes";
+import { Box, Flex, IconButton, Tabs, Text } from "@radix-ui/themes";
+import { ResetIcon } from "@radix-ui/react-icons";
 
 import useMakerStore from "~/stores/maker";
 import { useFaces } from "~/hooks/maker";
 
 import ColorSwatch from "../atoms/ColorSwatch";
 import FaceVisualizer from "../molecules/FaceVisualizer";
+import { replaceAt } from "~/utils/string";
+import { Pzl } from "~/types/maker";
+import { generateFd } from "~/helpers/maker";
 
 const TABS = [
   {
@@ -36,15 +40,28 @@ const TABS = [
 
 function FaceletDefinitionParameter() {
   const { pzl, fd } = useMakerStore((state) => state.parameters);
+  const updateParameters = useMakerStore((state) => state.updateParameters);
+
   const { u, r, f, d, l, b, n, t } = useFaces();
 
   const [selectedFace, setSelectedColor] = useState("u");
 
+  const defaultFd = generateFd(pzl);
+  const hasResetButton = fd !== defaultFd;
+
   return (
     <Flex direction="column" gap="1">
-      <Text as="label" size="2">
-        Facelet Colours
-      </Text>
+      <Flex justify="between" align="center">
+        <Text as="label" size="2">
+          Facelet Definition
+        </Text>
+
+        {hasResetButton && (
+          <IconButton size="1" variant="ghost" onClick={handleFdReset}>
+            <ResetIcon />
+          </IconButton>
+        )}
+      </Flex>
 
       <Flex direction="column" gap="3">
         <Tabs.Root defaultValue="up">
@@ -68,6 +85,7 @@ function FaceletDefinitionParameter() {
                       facelets: fd,
                     }}
                     size={120}
+                    onFaceletClick={handleFaceletClick}
                   />
                 </Flex>
               </Tabs.Content>
@@ -120,6 +138,16 @@ function FaceletDefinitionParameter() {
       </Flex>
     </Flex>
   );
+
+  function handleFaceletClick(facelet: number) {
+    const newFd = replaceAt(fd, facelet - 1, selectedFace) as Pzl;
+
+    updateParameters({ fd: newFd });
+  }
+
+  function handleFdReset() {
+    updateParameters({ fd: defaultFd });
+  }
 
   function handleFaceChange(face: string) {
     setSelectedColor(face);
