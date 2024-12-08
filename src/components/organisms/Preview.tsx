@@ -7,7 +7,12 @@ import { generateQueryParams } from "~/helpers/maker";
 function Preview() {
   const parameters = useMakerStore((state) => state.parameters);
 
-  const queryParameters = generateQueryParams(parameters);
+  const queryParameters = generateQueryParams(parameters, {
+    exclude: ["size"],
+    override: {
+      fmt: "svg",
+    },
+  });
 
   return (
     <Card>

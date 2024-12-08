@@ -6,6 +6,7 @@ export const BASE_URL = "https://cube.rider.biz/visualcube.php";
 export const DEFAULT_PARAMETERS: MakerParameters = {
   fmt: "svg",
   pzl: "3",
+  size: "128",
   view: "none",
   case: "",
   fd: generateFd("3"),
@@ -14,6 +15,11 @@ export const DEFAULT_PARAMETERS: MakerParameters = {
   arw: "",
   ac: "#808080",
 };
+
+export const FMT_OPTIONS = [
+  { label: "PNG", value: "png" },
+  { label: "SVG", value: "svg" },
+];
 
 export const PZL_OPTIONS = [
   { label: "1x1x1", value: "1" },
@@ -26,6 +32,14 @@ export const PZL_OPTIONS = [
   { label: "8x8x8", value: "8" },
   { label: "9x9x9", value: "9" },
   { label: "10x10x10", value: "10" },
+];
+
+export const SIZE_OPTIONS = [
+  { label: "64x64", value: "64" },
+  { label: "128x128", value: "128" },
+  { label: "256x256", value: "256" },
+  { label: "512x512", value: "512" },
+  { label: "1024x1024", value: "1024" },
 ];
 
 export const VIEW_OPTIONS = [

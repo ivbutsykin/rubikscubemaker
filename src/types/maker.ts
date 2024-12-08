@@ -8,6 +8,7 @@
 /* General */
 export type Fmt = "png" | "gif" | "jpg" | "svg" | "tiff" | "ico"; // Image Format
 export type Pzl = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10"; // Puzzle Type
+export type Size = string; // Size of generated image
 export type View = "plan" | "trans" | "none"; // Special View
 
 /* State Definition */
@@ -25,6 +26,7 @@ export type Ac = string; // Default Arrow Colour
 export interface MakerParameters {
   fmt: Fmt;
   pzl: Pzl;
+  size: string;
   view: View;
   case: Case;
   fd: Fd;

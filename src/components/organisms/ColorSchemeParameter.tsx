@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Flex, IconButton, Text } from "@radix-ui/themes";
+import { Button, Flex, Text } from "@radix-ui/themes";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { ChevronUpIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 import { ColorResult } from "react-color";
 
 import useMakerStore from "~/stores/maker";
@@ -23,9 +22,7 @@ function ColorSchemeParameter() {
           </Text>
 
           <Collapsible.Trigger asChild>
-            <IconButton size="1">
-              {isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-            </IconButton>
+            <Button size="1">{isOpen ? "COLLAPSE" : "EDIT"}</Button>
           </Collapsible.Trigger>
         </Flex>
 

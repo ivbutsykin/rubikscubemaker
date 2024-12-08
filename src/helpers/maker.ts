@@ -35,10 +35,20 @@ function handleArray(value: string[]) {
   return value.join(",");
 }
 
-export function generateQueryParams(parameters: MakerParameters) {
+export function generateQueryParams(
+  parameters: MakerParameters,
+  {
+    exclude = [],
+    override = {},
+  }: {
+    exclude?: string[];
+    override?: Record<string, string>;
+  } = {}
+) {
   const rawParams = {
     fmt: parameters.fmt,
     pzl: parameters.pzl,
+    size: parameters.size,
     view: handleNone(parameters.view),
     case: parameters.case,
     fd: parameters.fd,
@@ -49,13 +59,18 @@ export function generateQueryParams(parameters: MakerParameters) {
   };
 
   const filteredParams = Object.fromEntries(
-    Object.entries(rawParams).filter(
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      ([_, value]) => value !== ""
-    )
+    Object.entries(rawParams).filter(([key, value]) => {
+      if (exclude.includes(key)) {
+        return false;
+      }
+
+      return value !== "";
+    })
   );
 
-  const queryParams = new URLSearchParams(filteredParams).toString();
+  const overridedParams = { ...filteredParams, ...override };
+
+  const queryParams = new URLSearchParams(overridedParams).toString();
 
   return queryParams;
 }
