@@ -1,4 +1,4 @@
-import { Flex } from "@radix-ui/themes";
+import { Box, Flex } from "@radix-ui/themes";
 
 import Menubar from "../organisms/Menubar";
 import Sidebar from "../organisms/Sidebar";
@@ -13,13 +13,19 @@ function MakerTemplate() {
         <Flex direction="column" width="100%">
           <Menubar />
 
-          <Flex
-            justify="center"
-            align="center"
-            height="calc(100dvh - var(--menubar-height))"
-          >
-            <Preview />
-          </Flex>
+          <Box height="calc(100dvh - var(--menubar-height))" p="1">
+            <Flex
+              justify="center"
+              height="100%"
+              width="100%"
+              style={{
+                alignItems: "safe center",
+              }}
+              overflow="auto"
+            >
+              <Preview />
+            </Flex>
+          </Box>
         </Flex>
       </main>
     </Flex>

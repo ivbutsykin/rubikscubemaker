@@ -7,8 +7,8 @@
 @import "./components/organisms/Sidebar.css";
 
 :root {
-  --menubar-height: 60px;
-  --sidebar-width: 360px;
+  --menubar-height: 50px;
+  --sidebar-width: 300px;
 
   --gradient-transparent: repeating-conic-gradient(
       rgb(255, 255, 255) 0%,

@@ -32,6 +32,7 @@ const useMakerStore = create<MakerState>()(
               pzl,
               case: "",
               fd: generateFd(pzl),
+              arw: "",
             },
           };
         });
