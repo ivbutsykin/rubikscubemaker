@@ -10,11 +10,10 @@ function Menubar() {
         height="var(--menubar-height)"
         px="4"
       >
-        <Flex align="center">
-          <Button>
-            <DownloadIcon /> Export
-          </Button>
-        </Flex>
+        <Button>
+          <DownloadIcon /> Export
+        </Button>
+
         <Flex align="center" gap="5">
           <IconButton variant="ghost" color="gray" size="3">
             <GitHubLogoIcon />

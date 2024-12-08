@@ -4,6 +4,7 @@ import GeneralParameters from "./GeneralParameters";
 import StateDefinitionParameters from "./StateDefinitionParameters";
 import CubeStyleParameters from "./CubeStyleParameters";
 import AddedFeaturesParameters from "./AddedFeaturesParameters";
+import SidebarFooter from "./SidebarFooter";
 
 function Sidebar() {
   return (
@@ -15,6 +16,8 @@ function Sidebar() {
         <StateDefinitionParameters />
         <CubeStyleParameters />
         <AddedFeaturesParameters />
+
+        <SidebarFooter />
       </Flex>
     </aside>
   );

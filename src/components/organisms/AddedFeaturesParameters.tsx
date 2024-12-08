@@ -1,4 +1,4 @@
-import { Flex } from "@radix-ui/themes";
+import { Flex, Separator } from "@radix-ui/themes";
 import { ColorResult } from "react-color";
 
 import useMakerStore from "~/stores/maker";
@@ -20,6 +20,8 @@ function AddedFeaturesParameters() {
           onChange={handleAcChange}
         />
       </Flex>
+
+      <Separator size="4" />
     </Flex>
   );
 

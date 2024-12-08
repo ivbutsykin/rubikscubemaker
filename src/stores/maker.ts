@@ -9,6 +9,7 @@ interface MakerState {
   parameters: MakerParameters;
   updateParameters: (updates: Partial<MakerParameters>) => void;
   updatePuzzleType: (pzl: Pzl) => void;
+  resetParameters: () => void;
   isHydrating: boolean;
   setIsHydrating: (isHydrating: boolean) => void;
 }
@@ -36,6 +37,9 @@ const useMakerStore = create<MakerState>()(
             },
           };
         });
+      },
+      resetParameters: () => {
+        set({ parameters: DEFAULT_PARAMETERS });
       },
       isHydrating: true,
       setIsHydrating: (isHydrating) => {
