@@ -15,7 +15,7 @@ import {
   SunIcon,
 } from "@radix-ui/react-icons";
 
-import { useCopyToClipboard } from "~/hooks/shared";
+import { useCopyToClipboard, useMediaQuery } from "~/hooks/shared";
 import useMakerStore from "~/stores/maker";
 import { BASE_URL, FMT_OPTIONS, SIZE_OPTIONS } from "~/constants/maker";
 import { generateQueryParams } from "~/helpers/maker";
@@ -32,7 +32,9 @@ function Menubar() {
         height="var(--menubar-height)"
         px="4"
       >
-        <OpenButton />
+        <Flex align="center">
+          <OpenButton />
+        </Flex>
 
         <Flex align="center" gap="5">
           <Link
@@ -56,6 +58,7 @@ function Menubar() {
 }
 
 function OpenButton() {
+  const isSm = useMediaQuery("(min-width: 768px)");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, copy] = useCopyToClipboard();
 
@@ -68,6 +71,10 @@ function OpenButton() {
   const url = `${BASE_URL}?${queryParameters}`;
 
   const { fmt, size } = parameters;
+
+  if (!isSm) {
+    return null;
+  }
 
   return (
     <Popover.Root>
