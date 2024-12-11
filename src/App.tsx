@@ -1,16 +1,16 @@
-import { Theme } from "@radix-ui/themes";
 import { ErrorBoundary } from "react-error-boundary";
 
+import ThemedRadixUIProvider from "./theme/ThemedRadixUIProvider";
 import Router from "./router/Router";
 import ErrorScreen from "./components/pages/ErrorPage";
 
 function App() {
   return (
-    <Theme>
+    <ThemedRadixUIProvider>
       <ErrorBoundary FallbackComponent={ErrorScreen}>
         <Router />
       </ErrorBoundary>
-    </Theme>
+    </ThemedRadixUIProvider>
   );
 }
 

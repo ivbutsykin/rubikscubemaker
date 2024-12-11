@@ -12,6 +12,9 @@ function Preview() {
     override: {
       fmt: "svg",
     },
+    extra: {
+      bg: "t",
+    },
   });
 
   return (

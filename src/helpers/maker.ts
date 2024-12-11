@@ -40,9 +40,11 @@ export function generateQueryParams(
   {
     exclude = [],
     override = {},
+    extra = {},
   }: {
     exclude?: string[];
     override?: Record<string, string>;
+    extra?: Record<string, string>;
   } = {}
 ) {
   const rawParams = {
@@ -68,9 +70,9 @@ export function generateQueryParams(
     })
   );
 
-  const overridedParams = { ...filteredParams, ...override };
+  const mergedParams = { ...filteredParams, ...override, ...extra };
 
-  const queryParams = new URLSearchParams(overridedParams).toString();
+  const queryParams = new URLSearchParams(mergedParams).toString();
 
   return queryParams;
 }

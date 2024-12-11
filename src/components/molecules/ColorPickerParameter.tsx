@@ -1,5 +1,6 @@
 import { Flex, Text, Popover, Inset } from "@radix-ui/themes";
 import { ChromePicker, ColorResult } from "react-color";
+
 import ColorSwatch from "../atoms/ColorSwatch";
 
 interface ColorPickerParameterProps {

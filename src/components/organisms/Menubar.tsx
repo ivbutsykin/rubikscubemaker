@@ -20,10 +20,14 @@ import useMakerStore from "~/stores/maker";
 import { BASE_URL, FMT_OPTIONS, SIZE_OPTIONS } from "~/constants/maker";
 import { generateQueryParams } from "~/helpers/maker";
 import { Fmt } from "~/types/maker";
+import useSettingsStore from "~/stores/settings";
 
 import SelectParameter from "../molecules/SelectParameter";
 
 function Menubar() {
+  const colorMode = useSettingsStore((state) => state.colorMode);
+  const setColorMode = useSettingsStore((state) => state.setColorMode);
+
   return (
     <nav className="Menubar">
       <Flex
@@ -48,13 +52,22 @@ function Menubar() {
           <IconButton variant="ghost" color="gray" size="3">
             <GitHubLogoIcon />
           </IconButton>
-          <IconButton variant="ghost" color="gray" size="3">
+          <IconButton
+            variant="ghost"
+            color="gray"
+            size="3"
+            onClick={handleColorModeChange}
+          >
             <SunIcon />
           </IconButton>
         </Flex>
       </Flex>
     </nav>
   );
+
+  function handleColorModeChange() {
+    setColorMode(colorMode === "light" ? "dark" : "light");
+  }
 }
 
 function OpenButton() {
