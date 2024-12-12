@@ -49,8 +49,13 @@ function Menubar() {
           >
             VisualCube
           </Link>
-          <IconButton variant="ghost" color="gray" size="3">
-            <GitHubLogoIcon />
+          <IconButton variant="ghost" color="gray" size="3" asChild>
+            <a
+              href="https://github.com/ivbutsykin/rubikscubemaker-web"
+              target="_blank"
+            >
+              <GitHubLogoIcon />
+            </a>
           </IconButton>
           <IconButton
             variant="ghost"
@@ -111,21 +116,23 @@ function OpenButton() {
             options={SIZE_OPTIONS}
           />
 
-          <Flex direction="column" gap="2">
-            <TextField.Root size="1" value={url} disabled>
-              <TextField.Slot side="right">
-                <IconButton variant="ghost" onClick={handleCopy}>
-                  {isCopied ? <CheckIcon /> : <CopyIcon />}
-                </IconButton>
-              </TextField.Slot>
-            </TextField.Root>
+          <TextField.Root value={url} disabled>
+            <TextField.Slot side="right">
+              <IconButton variant="ghost" size="1" onClick={handleCopy}>
+                {isCopied ? (
+                  <CheckIcon height="14" width="14" />
+                ) : (
+                  <CopyIcon height="14" width="14" />
+                )}
+              </IconButton>
+            </TextField.Slot>
+          </TextField.Root>
 
-            <Button size="1" asChild>
-              <a href={url} target="_blank">
-                <OpenInNewWindowIcon /> Open in VisualCube
-              </a>
-            </Button>
-          </Flex>
+          <Button asChild>
+            <a href={url} target="_blank">
+              <OpenInNewWindowIcon /> Open in VisualCube
+            </a>
+          </Button>
         </Flex>
       </Popover.Content>
     </Popover.Root>

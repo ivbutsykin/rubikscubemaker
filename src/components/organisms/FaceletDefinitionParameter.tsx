@@ -1,15 +1,23 @@
 import { useState } from "react";
-import { Box, Flex, IconButton, Tabs, Text } from "@radix-ui/themes";
-import { ResetIcon } from "@radix-ui/react-icons";
+import {
+  Box,
+  Flex,
+  IconButton,
+  Popover,
+  Strong,
+  Tabs,
+  Text,
+} from "@radix-ui/themes";
+import { ExclamationTriangleIcon, ResetIcon } from "@radix-ui/react-icons";
 
 import useMakerStore from "~/stores/maker";
 import { useFaces } from "~/hooks/maker";
-
-import ColorSwatch from "../atoms/ColorSwatch";
-import FaceVisualizer from "../molecules/FaceVisualizer";
 import { replaceAt } from "~/utils/string";
 import { Pzl } from "~/types/maker";
 import { generateFd } from "~/helpers/maker";
+
+import ColorSwatch from "../atoms/ColorSwatch";
+import FaceVisualizer from "../molecules/FaceVisualizer";
 
 const TABS = [
   {
@@ -39,7 +47,11 @@ const TABS = [
 ] as const;
 
 function FaceletDefinitionParameter() {
-  const { pzl, fd } = useMakerStore((state) => state.parameters);
+  const {
+    case: makerCase,
+    pzl,
+    fd,
+  } = useMakerStore((state) => state.parameters);
   const updateParameters = useMakerStore((state) => state.updateParameters);
 
   const { u, r, f, d, l, b, n, t } = useFaces();
@@ -47,16 +59,35 @@ function FaceletDefinitionParameter() {
   const [selectedFace, setSelectedColor] = useState("u");
 
   const defaultFd = generateFd(pzl);
-  const hasResetButton = fd !== defaultFd;
+  const isDefaultFd = fd === defaultFd;
+
+  const hasWarning = !!makerCase && !isDefaultFd;
 
   return (
     <Flex direction="column" gap="1">
       <Flex justify="between" align="center">
-        <Text as="label" size="2">
-          Facelet Definition
-        </Text>
+        <Flex gap="1" align="center">
+          <Text as="label" size="2">
+            Facelet Definition
+          </Text>
 
-        {hasResetButton && (
+          {hasWarning && (
+            <Popover.Root>
+              <Popover.Trigger>
+                <ExclamationTriangleIcon color="orange" />
+              </Popover.Trigger>
+              <Popover.Content maxWidth="350px">
+                <Text size="2">
+                  Facelet definition specifies the <Strong>solved</Strong> cube
+                  state. Take this into account when using in combination with
+                  case parameter.
+                </Text>
+              </Popover.Content>
+            </Popover.Root>
+          )}
+        </Flex>
+
+        {!isDefaultFd && (
           <IconButton size="1" variant="ghost" onClick={handleFdReset}>
             <ResetIcon />
           </IconButton>

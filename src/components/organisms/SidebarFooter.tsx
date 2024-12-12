@@ -9,7 +9,7 @@ function SidebarFooter() {
     <Flex direction="column" p="3" gap="3">
       <AlertDialog.Root>
         <AlertDialog.Trigger>
-          <Button variant="outline" color="gray" size="1">
+          <Button variant="outline" color="red">
             Reset Parameters
           </Button>
         </AlertDialog.Trigger>

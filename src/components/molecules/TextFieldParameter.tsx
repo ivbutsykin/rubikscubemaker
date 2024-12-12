@@ -1,12 +1,16 @@
-import { Flex, Text, TextField, Tooltip } from "@radix-ui/themes";
-import { useState } from "react";
+import { Flex, Popover, Text, TextField } from "@radix-ui/themes";
+import { useEffect, useState } from "react";
 import { z } from "zod";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
+import {
+  ExclamationTriangleIcon,
+  InfoCircledIcon,
+} from "@radix-ui/react-icons";
 
 interface TextFieldParameterProps {
   id?: string;
   label: string;
-  tooltip?: string;
+  info?: React.ReactNode;
+  warning?: React.ReactNode;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
@@ -18,7 +22,8 @@ function TextFieldParameter(props: TextFieldParameterProps) {
   const {
     id,
     label,
-    tooltip,
+    info,
+    warning,
     value,
     onChange,
     placeholder,
@@ -28,45 +33,7 @@ function TextFieldParameter(props: TextFieldParameterProps) {
 
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const hasTooltip = !!tooltip;
-  const hasErrorMessage = !!errorMessage;
-
-  return (
-    <Flex direction="column" gap="1">
-      <Flex gap="1" align="center">
-        <Text as="label" size="2" htmlFor={id}>
-          {label}
-        </Text>
-
-        {hasTooltip && (
-          <Tooltip content={tooltip}>
-            <InfoCircledIcon color="gray" />
-          </Tooltip>
-        )}
-      </Flex>
-
-      <TextField.Root
-        id={id}
-        value={value}
-        onChange={handleChange}
-        placeholder={placeholder}
-        disabled={isDisabled}
-        color={hasErrorMessage ? "red" : "gray"}
-        size="1"
-      />
-      {hasErrorMessage && (
-        <Text size="1" color="red">
-          {errorMessage}
-        </Text>
-      )}
-    </Flex>
-  );
-
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const { value } = event.target;
-
-    onChange(event);
-
+  useEffect(() => {
     if (!validationSchema) {
       return;
     }
@@ -80,7 +47,58 @@ function TextFieldParameter(props: TextFieldParameterProps) {
         setErrorMessage(error.issues[0].message);
       }
     }
-  }
+  }, [validationSchema, value]);
+
+  const hasWarning = !!warning;
+  const hasInfo = !!info;
+  const hasErrorMessage = !!errorMessage;
+
+  return (
+    <Flex direction="column" gap="1">
+      <Flex gap="1" align="center">
+        <Text as="label" size="2" htmlFor={id}>
+          {label}
+        </Text>
+
+        {hasInfo && (
+          <Popover.Root>
+            <Popover.Trigger>
+              <InfoCircledIcon color="gray" />
+            </Popover.Trigger>
+            <Popover.Content maxWidth="350px">{info}</Popover.Content>
+          </Popover.Root>
+        )}
+        {hasWarning && (
+          <Popover.Root>
+            <Popover.Trigger>
+              <ExclamationTriangleIcon color="orange" />
+            </Popover.Trigger>
+            <Popover.Content maxWidth="350px">{warning}</Popover.Content>
+          </Popover.Root>
+        )}
+        {hasErrorMessage && (
+          <Popover.Root>
+            <Popover.Trigger>
+              <ExclamationTriangleIcon color="red" />
+            </Popover.Trigger>
+            <Popover.Content maxWidth="350px">
+              <Text size="2">{errorMessage}</Text>
+            </Popover.Content>
+          </Popover.Root>
+        )}
+      </Flex>
+
+      <TextField.Root
+        id={id}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        disabled={isDisabled}
+        color={hasErrorMessage ? "red" : "gray"}
+        size="1"
+      />
+    </Flex>
+  );
 }
 
 export default TextFieldParameter;
