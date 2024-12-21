@@ -11,8 +11,6 @@ function Preview() {
     exclude: ["size"],
     override: {
       fmt: "svg",
-    },
-    extra: {
       bg: "t",
     },
   });

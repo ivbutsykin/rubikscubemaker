@@ -55,6 +55,7 @@ export function generateQueryParams(
     case: parameters.case,
     fd: parameters.fd,
     sch: handleArray(parameters.sch.map(handleColor)),
+    bg: handleColor(parameters.bg),
     cc: handleColor(parameters.cc),
     arw: parameters.arw,
     ac: handleColor(parameters.ac),

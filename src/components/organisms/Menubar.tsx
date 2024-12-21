@@ -14,6 +14,7 @@ import {
   OpenInNewWindowIcon,
   SunIcon,
 } from "@radix-ui/react-icons";
+import { ColorResult } from "react-color";
 
 import { useCopyToClipboard, useMediaQuery } from "~/hooks/shared";
 import useMakerStore from "~/stores/maker";
@@ -23,6 +24,7 @@ import { Fmt } from "~/types/maker";
 import useSettingsStore from "~/stores/settings";
 
 import SelectParameter from "../molecules/SelectParameter";
+import ColorPickerParameter from "../molecules/ColorPickerParameter";
 
 function Menubar() {
   const colorMode = useSettingsStore((state) => state.colorMode);
@@ -88,7 +90,7 @@ function OpenButton() {
   const queryParameters = generateQueryParams(parameters);
   const url = `${BASE_URL}?${queryParameters}`;
 
-  const { fmt, size } = parameters;
+  const { fmt, size, bg } = parameters;
 
   if (!isSm) {
     return null;
@@ -114,6 +116,11 @@ function OpenButton() {
             value={size}
             onValueChange={handleSizeChange}
             options={SIZE_OPTIONS}
+          />
+          <ColorPickerParameter
+            label="Background Colour of Image"
+            color={bg}
+            onChange={handleBgChange}
           />
 
           <TextField.Root value={url} disabled>
@@ -144,6 +151,10 @@ function OpenButton() {
 
   function handleSizeChange(value: string) {
     updateParameters({ size: value });
+  }
+
+  function handleBgChange(color: ColorResult) {
+    updateParameters({ bg: color.hex });
   }
 
   async function handleCopy() {
