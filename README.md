@@ -20,7 +20,7 @@ Rubik's Cube Maker is a user-friendly interface around the [VisualCube](https://
 
 1. Clone the repo:
    ```sh
-   git clone https://github.com/ivbutsykin/rubikscubemaker-web.git
+   git clone https://github.com/ivbutsykin/rubikscubemaker.git
    ```
 2. Install NPM packages:
    ```sh
